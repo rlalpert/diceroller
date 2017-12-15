@@ -19,20 +19,6 @@ def create_roll(user_input):
 
   mo = roll_regex.search(user_input)
 
-  # if mo != None:
-  #   print("{match} is valid.".format(match=mo.group(0)))
-  #   dice_roll = mo.group(0)
-  #   dice_count = int(mo.group(1))
-  #   dice_type = int(mo.group(2))
-  #   total = 0
-  #   for i in range(dice_count):
-  #     print("Rolling " + str(i+1) + " of " + dice_roll + "...")
-  #     this_roll = randint(1, dice_type)
-  #     print(this_roll)
-  #     total += this_roll
-  #   print("Total is " + str(total))
-  # else:
-  #   print("I'm sorry, I can't do that, Dave.")
   if mo != None:
     dice_roll = mo.group(0)
     dice_count = int(mo.group(1))
@@ -52,7 +38,6 @@ def create_roll(user_input):
   return roll
 
 while True:
-  # Get input from user
   print("Please roll: ")
   user_input = input()
   try:
