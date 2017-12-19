@@ -13,11 +13,12 @@ class Roll:
         self.total = total
 
 def parse_input(user_input):
+    stripped_input = user_input.replace(' ', '')
     roll_regex = re.compile(r'(?!d)(([+-])?(\d+)d(\d+))(?!d|\d+)')
     modifier_regex = re.compile(r'[+-]{1}\d{1,3}(?!d|\d+)')
 
-    roll_matches = roll_regex.findall(user_input)
-    modifier_matches = modifier_regex.findall(user_input)
+    roll_matches = roll_regex.findall(stripped_input)
+    modifier_matches = modifier_regex.findall(stripped_input)
 
     print('THESE ARE ROLL MATCHES:')
     print(roll_matches)
