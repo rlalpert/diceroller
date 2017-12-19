@@ -13,7 +13,7 @@ class Roll:
         self.total = total
 
 def parse_input(user_input):
-    roll_regex = re.compile(r'(([+-])?(\d{1,3})d(\d{1,3}))')
+    roll_regex = re.compile(r'(?!d)(([+-])?(\d+)d(\d+))(?!d|\d+)')
     modifier_regex = re.compile(r'[+-]{1}\d{1,3}(?!d|\d+)')
 
     roll_matches = roll_regex.findall(user_input)
