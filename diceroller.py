@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 # diceroller.py - Rolls DnD Style Dice
 
-import re, pprint
+import re
 from random import randint
 
 class Roll:
@@ -46,16 +46,56 @@ def convert_to_rolls(roll_list):
     """
     Takes list created by parse_input() and converts all items to Roll class
     """
-    # for item in roll_list:
-    #     if type(item) is tuple:
-
-    #     elif type(item) is str:
+    rolls_list = []
+    for item in roll_list:
+        if type(item) is tuple:
+            # (dice_roll, multiplier, modifier, dice_count, dice_type, all_rolls, total)
+            # ('+1d4', '+', '1', '4')
+            dice_count = int(item[2])
+            dice_type = int(item[3])
+            all_rolls = []
+            total = 0
+            multiplier = int(item[1] + str(1))
+            for i in range(dice_count):
+                this_roll = randint(1, dice_type)
+                all_rolls.append(this_roll)
+                total += this_roll
+            rolls_list.append(
+                Roll(item[0], 
+                    multiplier,
+                    0,
+                    dice_count,
+                    dice_type,
+                    all_rolls,
+                    total*multiplier)
+                )
+        elif type(item) is str:
+            multiplier = 0
+            modifier = int(item[1:])
+            if int(item) > 0:
+                multiplier = 1
+            else:
+                multiplier = -1
+            total = modifier * multiplier
+            rolls_list.append(
+                Roll(item,
+                    multiplier,
+                    modifier,
+                    0,
+                    0,
+                    None,
+                    total)
+                )
+    return rolls_list
 
 if __name__ == '__main__':
     while True:
         print('Please roll: ')
         user_input = input()
-        print(parse_input(user_input))
+        parsed_input = parse_input(user_input)
+        parsed_rolls = convert_to_rolls(parsed_input)
+        for roll in parsed_rolls:
+            print(roll.__dict__)
 
 # def create_roll(user_input):
 #     # Authenticate Roll
