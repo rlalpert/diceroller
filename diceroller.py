@@ -31,6 +31,9 @@ def parse_input(user_input):
     # print(roll_matches)
     # print('THESE ARE MODIFIER MATCHES:')
     # print(modifier_matches)
+    if opening_modifier_matches:
+        opening_modifier_matches[0] = '+' + opening_modifier_matches[0]
+
     return roll_matches + modifier_matches + opening_modifier_matches
 
 if __name__ == '__main__':
