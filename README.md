@@ -5,6 +5,8 @@
 # To-Do
 
 * Weed out bad input earlier in parsing
+* Return roll totals
+* add methods for getting averages to Rolls
 
 # Setup Virtual Environment
 
