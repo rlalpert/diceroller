@@ -1,6 +1,6 @@
 # Work In Progress
 
--
+* Right now it's just parsing dnd-stylle rolls
 
 # To-Do
 
@@ -9,6 +9,7 @@
 # Setup Virtual Environment
 
 `python3 -m venv env`
+
 `source env/bin/activate`
 
 # Install Packages
