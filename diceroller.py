@@ -5,30 +5,39 @@ import re, pprint
 from random import randint
 
 class Roll:
-    def __init__(self, dice_roll, dice_count, dice_type, all_rolls, total):
+    def __init__(self, dice_roll, modifier, dice_count, dice_type, all_rolls, total):
         self.dice_roll = dice_roll
+        self.modifier = modifier
         self.dice_count = dice_count
         self.dice_type = dice_type
         self.all_rolls = all_rolls
         self.total = total
 
 def parse_input(user_input):
+    # remove all whitespace
     stripped_input = user_input.replace(' ', '')
-    roll_regex = re.compile(r'(?!d)(([+-])?(\d+)d(\d+))(?!d|\d+)')
+    # regex for dice-roll format
+    roll_regex = re.compile(r'((?!d)([+-]?)(\d+)d(\d+))(?!d|\d+)')
+    # regex for modifiers
     modifier_regex = re.compile(r'[+-]{1}\d{1,3}(?!d|\d+)')
+    # positive modifier at start of line special case
+    opening_modifier_regex = re.compile(r'^\d{1,3}(?!d|\d+)')
 
     roll_matches = roll_regex.findall(stripped_input)
     modifier_matches = modifier_regex.findall(stripped_input)
+    opening_modifier_matches = opening_modifier_regex.findall(stripped_input)
 
-    print('THESE ARE ROLL MATCHES:')
-    print(roll_matches)
-    print('THESE ARE MODIFIER MATCHES:')
-    print(modifier_matches)
+    # print('THESE ARE ROLL MATCHES:')
+    # print(roll_matches)
+    # print('THESE ARE MODIFIER MATCHES:')
+    # print(modifier_matches)
+    return roll_matches + modifier_matches + opening_modifier_matches
 
-while True:
-    print('Please roll: ')
-    user_input = input()
-    parse_input(user_input)
+if __name__ == '__main__':
+    while True:
+        print('Please roll: ')
+        user_input = input()
+        print(parse_input(user_input))
 
 # def create_roll(user_input):
 #     # Authenticate Roll

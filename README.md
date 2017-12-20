@@ -1,10 +1,28 @@
 # Work In Progress
 
-Currently takes a single, unmodified dice roll.
+-
 
 # To-Do
 
-* Accept multiple dice rolls at once
-* Add Modifier class
-* Make usable as a package
-* Change roll input from a while loop
+* Make parsing less hacky
+
+# Setup Virtual Environment
+
+`python3 -m venv env`
+`source env/bin/activate`
+
+# Install Packages
+
+`pip install -r requirements.txt`
+
+# Use
+
+`python diceroller.py`
+
+# Testing
+
+To watch (run from project directory):
+`pytest -f .`
+
+Detailed test info:
+`pytest -v`
