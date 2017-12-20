@@ -4,7 +4,7 @@
 
 # To-Do
 
-* Make parsing less hacky
+* Weed out bad input earlier in parsing
 
 # Setup Virtual Environment
 
