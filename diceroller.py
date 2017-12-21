@@ -88,6 +88,12 @@ def convert_to_rolls(roll_list):
                 )
     return rolls_list
 
+def get_total(rolls_list):
+    total = 0
+    for roll in rolls_list:
+        total += roll.total
+    return total
+
 if __name__ == '__main__':
     while True:
         print('Please roll: ')
@@ -96,6 +102,7 @@ if __name__ == '__main__':
         parsed_rolls = convert_to_rolls(parsed_input)
         for roll in parsed_rolls:
             print(roll.__dict__)
+        print("Total: " + str(get_total(parsed_rolls)))
 
 # def create_roll(user_input):
 #     # Authenticate Roll
