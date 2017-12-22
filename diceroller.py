@@ -4,6 +4,11 @@
 import re
 from random import randint
 
+config = {
+    # Set to True returns just the total, set to False returns full roll info
+    "simple": False
+}
+
 class Roll:
     def __init__(self, dice_roll, multiplier, modifier, dice_count, dice_type, all_rolls, total):
         self.dice_roll = dice_roll
@@ -94,39 +99,29 @@ def get_total(rolls_list):
         total += roll.total
     return total
 
+def roll_baby_roll(user_input):
+    parsed_input = parse_input(user_input)
+    parsed_rolls = convert_to_rolls(parsed_input)
+    total = get_total(parsed_rolls)
+    if config['simple']:
+        return total
+    else:
+        all_rolls = []
+        for roll in parsed_rolls:
+            all_rolls.append(roll.__dict__)
+        return total, all_rolls
+
 if __name__ == '__main__':
     while True:
         print('Please roll: ')
         user_input = input()
-        parsed_input = parse_input(user_input)
-        parsed_rolls = convert_to_rolls(parsed_input)
-        for roll in parsed_rolls:
-            print(roll.__dict__)
-        print("Total: " + str(get_total(parsed_rolls)))
-
-# def create_roll(user_input):
-#     # Authenticate Roll
-#     roll_regex = re.compile(r'^(\d{1,3})d(\d{1,3})$')
-#     roll_object = {}
-
-#     mo = roll_regex.search(user_input)
-
-#     if mo != None:
-#         dice_roll = mo.group(0)
-#         dice_count = int(mo.group(1))
-#         dice_type = int(mo.group(2))
-#         all_rolls = []
-#         total = 0
-
-#         for i in range(dice_count):
-#             this_roll = randint(1, dice_type)
-#             all_rolls.append(this_roll)
-#         total += this_roll
-#     else:
-#         print("That is not a valid roll. Rolls should take the form ___d___.")
-#         return
-#     roll = Roll(dice_roll, dice_count, dice_type, all_rolls, total)
-#     return roll
+        if config['simple']:
+            print("Total: " + str(roll_baby_roll(user_input)))
+        else:
+            total, all_rolls = (roll_baby_roll(user_input))
+            for roll in all_rolls:
+                print(str(roll))
+            print("Total: " + str(total))
 
 # while True:
 #     print("Please roll (or hit enter to roll 1d20): ")
