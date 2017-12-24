@@ -99,7 +99,7 @@ def get_total(rolls_list):
         total += roll.total
     return total
 
-def roll_baby_roll(user_input):
+def roll(user_input):
     parsed_input = parse_input(user_input)
     parsed_rolls = convert_to_rolls(parsed_input)
     total = get_total(parsed_rolls)
@@ -122,19 +122,3 @@ if __name__ == '__main__':
             for roll in all_rolls:
                 print(str(roll))
             print("Total: " + str(total))
-
-# while True:
-#     print("Please roll (or hit enter to roll 1d20): ")
-#     user_input = input()
-#     try:
-#         if user_input == '':
-#             # roll 1d20 by default
-#             my_roll = create_roll('1d20')
-#             print(str(my_roll.total) + '\n' + str(my_roll.all_rolls))
-#         else:
-#             my_roll = create_roll(user_input)
-#             print(str(my_roll.total) + '\n' + str(my_roll.all_rolls))
-#     except ValueError as e:
-#         print("You can't roll a zero-sided di.")
-#     except Exception as e:
-#         print("ERROR: {e}.".format(e=e))
