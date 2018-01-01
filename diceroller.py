@@ -4,11 +4,6 @@
 import re
 from random import randint
 
-config = {
-    # Set to True returns just the total, set to False returns full roll info
-    "simple": False
-}
-
 class Roll:
     def __init__(self, dice_roll, multiplier, modifier, dice_count, dice_type, all_rolls, total):
         self.dice_roll = dice_roll
@@ -100,16 +95,22 @@ def get_total(rolls_list):
     return total
 
 def roll(user_input):
+    # returns only the result of the roll
     parsed_input = parse_input(user_input)
     parsed_rolls = convert_to_rolls(parsed_input)
     total = get_total(parsed_rolls)
-    if config['simple']:
-        return total
-    else:
-        all_rolls = []
-        for roll in parsed_rolls:
-            all_rolls.append(roll.__dict__)
-        return total, all_rolls
+    return total
+
+
+def roll_detailed(user_input):
+    # returns detailed information on the roll
+    parsed_input = parse_input(user_input)
+    parsed_rolls = convert_to_rolls(parsed_input)
+    total = get_total(parsed_rolls)
+    all_rolls = []
+    for roll in parsed_rolls:
+        all_rolls.append(roll.__dict__)
+    return total, all_rolls
 
 if __name__ == '__main__':
     while True:
