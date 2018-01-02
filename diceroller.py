@@ -4,6 +4,11 @@
 import re
 from random import randint
 
+config = {
+    # Set to True returns just the total, set to False returns full roll info
+    "simple": True
+}
+
 class Roll:
     def __init__(self, dice_roll, multiplier, modifier, dice_count, dice_type, all_rolls, total):
         self.dice_roll = dice_roll
@@ -117,9 +122,9 @@ if __name__ == '__main__':
         print('Please roll: ')
         user_input = input()
         if config['simple']:
-            print("Total: " + str(roll_baby_roll(user_input)))
+            print("Total: " + str(roll(user_input)))
         else:
-            total, all_rolls = (roll_baby_roll(user_input))
+            total, all_rolls = (roll_detailed(user_input))
             for roll in all_rolls:
                 print(str(roll))
             print("Total: " + str(total))
