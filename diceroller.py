@@ -54,8 +54,6 @@ def convert_to_rolls(roll_list):
     rolls_list = []
     for item in roll_list:
         if type(item) is tuple:
-            # (dice_roll, multiplier, modifier, dice_count, dice_type, all_rolls, total)
-            # ('+1d4', '+', '1', '4')
             dice_count = int(item[2])
             dice_type = int(item[3])
             all_rolls = []

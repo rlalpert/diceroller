@@ -1,12 +1,10 @@
-# Work In Progress
+# Diceroller
 
-* Right now it's just parsing dnd-stylle rolls
+* Rolls DnD style dice.
 
 # To-Do
 
-* Weed out bad input earlier in parsing
-* Return roll totals
-* add methods for getting averages to Rolls
+* Get average rolls from roll info.
 
 # Setup Virtual Environment
 
