@@ -5,6 +5,8 @@
 # To-Do
 
 * Get average rolls from roll info.
+* Setup more tests
+* setup.py 
 
 # Setup Virtual Environment
 
