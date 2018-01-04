@@ -6,7 +6,7 @@
 
 * Get average rolls from roll info.
 * Setup more tests
-* setup.py 
+* Move private functions to another file
 
 # Setup Virtual Environment
 
