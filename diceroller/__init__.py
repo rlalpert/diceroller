@@ -2,12 +2,10 @@
 # diceroller.py - Rolls DnD Style Dice
 
 import re
+from . import config
 from random import randint
 
-config = {
-    # Set to True returns just the total, set to False returns full roll info
-    "simple": True
-}
+CONF = config.CONF
 
 class Roll:
     def __init__(self, dice_roll, multiplier, modifier, dice_count, dice_type, all_rolls, total):
@@ -119,7 +117,7 @@ if __name__ == '__main__':
     while True:
         print('Please roll: ')
         user_input = input()
-        if config['simple']:
+        if CONF['simple']:
             print("Total: " + str(roll(user_input)))
         else:
             total, all_rolls = (roll_detailed(user_input))
