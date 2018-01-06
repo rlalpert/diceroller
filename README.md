@@ -2,26 +2,9 @@
 
 * Rolls DnD style dice.
 
-# To-Do
-
-* Get average rolls from roll info.
-* Setup more tests
-* Move private functions to another file
-* Move config into separate file
-
-# Setup Virtual Environment
-
-`python3 -m venv env`
-
-`source env/bin/activate`
-
-# Install Packages
-
-`pip install -r requirements.txt`
-
 # Usage
 
-Can be run from the command line or as a package.
+Can be run from the command line or as a package. 
 
 As a package:
 
@@ -35,13 +18,13 @@ diceroller.roll("1d20 +3 -1d10")
 #   first item is an integer of the total
 #   second item is a list of dictionaries with information on each roll
 diceroller.roll_detailed("-2d10 +2")
-
 ```
 
-# Testing
+From the command line:
 
-To watch (run from project directory):
-`pytest -f .`
+Set whether you want detailed information on each roll in `config.py`. Then, just run `__init__.py` and you'll be prompted to input a roll.
 
-Detailed test info:
-`pytest -v`
+# To-Do
+
+* Get average rolls from roll info.
+* Setup more tests
