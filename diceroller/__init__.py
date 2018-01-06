@@ -2,10 +2,7 @@
 # diceroller.py - Rolls DnD Style Dice
 
 import re
-from . import config
 from random import randint
-
-CONF = config.CONF
 
 class Roll:
     def __init__(self, dice_roll, multiplier, modifier, dice_count, dice_type, all_rolls, total):
@@ -18,7 +15,7 @@ class Roll:
         self.all_rolls = all_rolls
         self.total = total
 
-def parse_input(user_input):
+def _parse_input(user_input):
     # remove all whitespace
     stripped_input = user_input.replace(' ', '')
     # regex for dice-roll format
@@ -45,9 +42,9 @@ def parse_input(user_input):
     # return a list of parsed roll information
     return opening_roll_matches + roll_matches + modifier_matches + opening_modifier_matches
 
-def convert_to_rolls(roll_list):
+def _convert_to_rolls(roll_list):
     """
-    Takes list created by parse_input() and converts all items to Roll class
+    Takes list created by _parse_input() and converts all items to Roll class
     """
     rolls_list = []
     for item in roll_list:
@@ -89,7 +86,7 @@ def convert_to_rolls(roll_list):
                 )
     return rolls_list
 
-def get_total(rolls_list):
+def _get_total(rolls_list):
     total = 0
     for roll in rolls_list:
         total += roll.total
@@ -97,23 +94,25 @@ def get_total(rolls_list):
 
 def roll(user_input):
     # returns only the result of the roll
-    parsed_input = parse_input(user_input)
-    parsed_rolls = convert_to_rolls(parsed_input)
-    total = get_total(parsed_rolls)
+    parsed_input = _parse_input(user_input)
+    parsed_rolls = _convert_to_rolls(parsed_input)
+    total = _get_total(parsed_rolls)
     return total
 
 
 def roll_detailed(user_input):
     # returns detailed information on the roll
-    parsed_input = parse_input(user_input)
-    parsed_rolls = convert_to_rolls(parsed_input)
-    total = get_total(parsed_rolls)
+    parsed_input = _parse_input(user_input)
+    parsed_rolls = _convert_to_rolls(parsed_input)
+    total = _get_total(parsed_rolls)
     all_rolls = []
     for roll in parsed_rolls:
         all_rolls.append(roll.__dict__)
     return total, all_rolls
 
 if __name__ == '__main__':
+    import config
+    CONF = config.CONF
     while True:
         print('Please roll: ')
         user_input = input()
