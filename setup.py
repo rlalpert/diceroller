@@ -2,10 +2,13 @@ from setuptools import setup
 
 setup(
    name='diceroller',
-   version='1.0',
+   version='0.1.0',
    description='A simple DnD style dice roller.',
    author='Rachel Alpert',
    author_email='universepup@google.com',
+   url='https://github.com/rlalpert/diceroller',
+   download_url='https://github.com/rlalpert/diceroller/archive/0.1.0.tar.gz',
+   keywords=['dice', 'roll', 'dnd', 'd&d'],
    packages=['diceroller'],  
    install_requires=[], 
    scripts=[]

@@ -1,10 +1,10 @@
 # Diceroller
 
-* Rolls DnD style dice.
+* Rolls DnD style dice. 
 
 # Usage
 
-Can be run from the command line or as a package. 
+Diceroller can be run from the command line or as a package. It will search string input for DnD style dice rolls. 
 
 As a package:
 
