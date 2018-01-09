@@ -1,5 +1,7 @@
 from diceroller import _parse_input
 from diceroller import _convert_to_rolls
+from diceroller import _get_total
+from diceroller import Roll
 
 def test_parse_input_regex():
     assert _parse_input('1d4 +7-2d9') == [('+1d4', '+', '1', '4'), ('-2d9', '-', '2', '9'), '+7']
@@ -34,7 +36,13 @@ def test_convert_to_rolls_totals_output():
             for item in roll['all_rolls']:
                 assert type(item) == int
 
+def test_get_total():
+    rolls_list = [
+        Roll(0,0,0,0,0,0,15), 
+        Roll(0,0,0,0,0,0,-5), 
+        Roll(0,0,0,0,0,0,10)]
 
+    assert _get_total(rolls_list) == 20
 
 
 
