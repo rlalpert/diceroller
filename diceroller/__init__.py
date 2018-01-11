@@ -105,9 +105,7 @@ def roll_detailed(user_input):
     parsed_input = _parse_input(user_input)
     parsed_rolls = _convert_to_rolls(parsed_input)
     total = _get_total(parsed_rolls)
-    all_rolls = []
-    for roll in parsed_rolls:
-        all_rolls.append(roll.__dict__)
+    all_rolls = [roll.__dict__ for roll in parsed_rolls]
     return total, all_rolls
 
 if __name__ == '__main__':
