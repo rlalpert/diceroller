@@ -14,9 +14,9 @@ import diceroller
 # returns an integer with the total of the roll
 diceroller.roll("1d20 +3 -1d10")
 
-# returns a tuple
-#   first item is an integer of the total
-#   second item is a list of dictionaries with information on each roll
+# returns a dictionary
+#   "total" is an integer of the total
+#   "all_rolls" is a list of dictionaries with information on each roll
 diceroller.roll_detailed("-2d10 +2")
 ```
 

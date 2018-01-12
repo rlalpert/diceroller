@@ -106,7 +106,7 @@ def roll_detailed(user_input):
     parsed_rolls = _convert_to_rolls(parsed_input)
     total = _get_total(parsed_rolls)
     all_rolls = [roll.__dict__ for roll in parsed_rolls]
-    return total, all_rolls
+    return {"total": total, "all_rolls": all_rolls}
 
 if __name__ == '__main__':
     import config
@@ -117,7 +117,7 @@ if __name__ == '__main__':
         if CONF['simple']:
             print("Total: " + str(roll(user_input)))
         else:
-            total, all_rolls = (roll_detailed(user_input))
-            for roll in all_rolls:
+            detailed_roll = roll_detailed(user_input)
+            for roll in detailed_roll["all_rolls"]:
                 print(str(roll))
-            print("Total: " + str(total))
+            print("Total: " + str(detailed_roll["total"]))
