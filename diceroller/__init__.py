@@ -99,25 +99,37 @@ def roll(user_input):
     total = _get_total(parsed_rolls)
     return total
 
-
 def roll_detailed(user_input):
-    # returns detailed information on the roll
     parsed_input = _parse_input(user_input)
     parsed_rolls = _convert_to_rolls(parsed_input)
     total = _get_total(parsed_rolls)
-    all_rolls = [roll.__dict__ for roll in parsed_rolls]
-    return {"total": total, "all_rolls": all_rolls}
+    rolls = []
+    for roll in parsed_rolls:
+        if roll.all_rolls:
+            for r in roll.all_rolls:
+                rolls.append(r * roll.multiplier)
+    modifiers = [roll.modifier*roll.multiplier for roll in parsed_rolls if roll.modifier]
+    return {"total": total, "rolls": rolls, "modifiers": modifiers}
 
-if __name__ == '__main__':
-    import config
-    CONF = config.CONF
-    while True:
-        print('Please roll: ')
-        user_input = input()
-        if CONF['simple']:
-            print("Total: " + str(roll(user_input)))
-        else:
-            detailed_roll = roll_detailed(user_input)
-            for roll in detailed_roll["all_rolls"]:
-                print(str(roll))
-            print("Total: " + str(detailed_roll["total"]))
+def roll_detailed_dev(user_input):
+    # returns detailed information on the roll
+    #   including the structure of the roll class
+    parsed_input = _parse_input(user_input)
+    parsed_rolls = _convert_to_rolls(parsed_input)
+    total = _get_total(parsed_rolls)
+    detailed_rolls = [roll.__dict__ for roll in parsed_rolls]
+    return {"total": total, "detailed_rolls": detailed_rolls}
+
+# if __name__ == '__main__':
+#     import config
+#     CONF = config.CONF
+#     while True:
+#         print('Please roll: ')
+#         user_input = input()
+#         if CONF['simple']:
+#             print("Total: " + str(roll(user_input)))
+#         else:
+#             detailed_roll = roll_detailed(user_input)
+#             for roll in detailed_roll["all_rolls"]:
+#                 print(str(roll))
+#             print("Total: " + str(detailed_roll["total"]))
