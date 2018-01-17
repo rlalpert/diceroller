@@ -1,0 +1,7 @@
+# diceroller changelog
+
+Jan 17 2018
+
+- renamed original `roll_detailed` to `roll_detailed_dev`
+- `roll_detailed` now returns a dictionary with three keys: total (int), rolls (list), and modifiers (list)
+- removed cli; can only be run as a package, currently

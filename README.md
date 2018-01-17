@@ -4,27 +4,28 @@
 
 # Usage
 
-Diceroller can be run from the command line or as a package. It will search string input for DnD style dice rolls. 
+To install:
 
-As a package:
+`pip install diceroller`
+
+Example usage:
 
 ```python
 import diceroller
 
-# returns an integer with the total of the roll
+# returns int
 diceroller.roll("1d20 +3 -1d10")
+14
 
 # returns a dictionary
-#   "total" is an integer of the total
-#   "all_rolls" is a list of dictionaries with information on each roll
-diceroller.roll_detailed("-2d10 +2")
+diceroller.roll_detailed("2d20-1d6+3-1")
+{"total": 18, "rolls": [12, 7, -3], "modifiers": [3, -1]}
+
+# returns a significantly more complex dictionary
+diceroller.roll_detailed_dev("2d20-1d8+2-1")
+{'total': 24, 'detailed_rolls': [{'dice_roll': '+2d20', 'multiplier': 1, 'modifier': 0, 'dice_count': 2, 'dice_type': 20, 'all_rolls': [15, 12], 'total': 27}, {'dice_roll': '-1d8', 'multiplier': -1, 'modifier': 0, 'dice_count': 1, 'dice_type': 8, 'all_rolls': [4], 'total': -4}, {'dice_roll': '+2', 'multiplier': 1, 'modifier': 2, 'dice_count': 0, 'dice_type': 0, 'all_rolls': None, 'total': 2}, {'dice_roll': '-1', 'multiplier': -1, 'modifier': 1, 'dice_count': 0, 'dice_type': 0, 'all_rolls': None, 'total': -1}]}
 ```
-
-From the command line:
-
-Set whether you want detailed information on each roll in `config.py`. Then, just run `__init__.py` and you'll be prompted to input a roll.
 
 # To-Do
 
 * Get average rolls from roll info.
-* Setup more tests
