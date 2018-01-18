@@ -93,13 +93,21 @@ def _get_total(rolls_list):
     return total
 
 def roll(user_input):
-    # returns only the result of the roll
+    """
+    Returns the result of the roll only as an integer.
+    """
     parsed_input = _parse_input(user_input)
     parsed_rolls = _convert_to_rolls(parsed_input)
     total = _get_total(parsed_rolls)
     return total
 
 def roll_detailed(user_input):
+    """
+    Returns a dictionary with the following keys:
+    - total (int)
+    - rolls (list)
+    - modifiers (list)
+    """
     parsed_input = _parse_input(user_input)
     parsed_rolls = _convert_to_rolls(parsed_input)
     total = _get_total(parsed_rolls)
@@ -112,8 +120,12 @@ def roll_detailed(user_input):
     return {"total": total, "rolls": rolls, "modifiers": modifiers}
 
 def roll_detailed_dev(user_input):
-    # returns detailed information on the roll
-    #   including the structure of the roll class
+    """
+    Returns a dictionary with the following keys:
+    - total (int)
+    - detailed_rolls (list)
+        -- the detailed rolls expose all Rolls in dictionary format
+    """
     parsed_input = _parse_input(user_input)
     parsed_rolls = _convert_to_rolls(parsed_input)
     total = _get_total(parsed_rolls)

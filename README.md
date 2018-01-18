@@ -13,7 +13,7 @@ Example usage:
 ```python
 import diceroller
 
-# returns int
+# returns an int
 diceroller.roll("1d20 +3 -1d10")
 14
 
@@ -23,7 +23,15 @@ diceroller.roll_detailed("2d20-1d6+3-1")
 
 # returns a significantly more complex dictionary
 diceroller.roll_detailed_dev("2d20-1d8+2-1")
-{'total': 24, 'detailed_rolls': [{'dice_roll': '+2d20', 'multiplier': 1, 'modifier': 0, 'dice_count': 2, 'dice_type': 20, 'all_rolls': [15, 12], 'total': 27}, {'dice_roll': '-1d8', 'multiplier': -1, 'modifier': 0, 'dice_count': 1, 'dice_type': 8, 'all_rolls': [4], 'total': -4}, {'dice_roll': '+2', 'multiplier': 1, 'modifier': 2, 'dice_count': 0, 'dice_type': 0, 'all_rolls': None, 'total': 2}, {'dice_roll': '-1', 'multiplier': -1, 'modifier': 1, 'dice_count': 0, 'dice_type': 0, 'all_rolls': None, 'total': -1}]}
+{'total': 24, 'detailed_rolls': 
+  [{'dice_roll': '+2d20', 'multiplier': 1, 'modifier': 0, 'dice_count': 2, 
+    'dice_type': 20, 'all_rolls': [15, 12], 'total': 27}, 
+  {'dice_roll': '-1d8', 'multiplier': -1, 'modifier': 0, 'dice_count': 1, 
+    'dice_type': 8, 'all_rolls': [4], 'total': -4}, 
+  {'dice_roll': '+2', 'multiplier': 1, 'modifier': 2, 'dice_count': 0, 
+    'dice_type': 0, 'all_rolls': None, 'total': 2}, 
+  {'dice_roll': '-1', 'multiplier': -1, 'modifier': 1, 'dice_count': 0, 
+    'dice_type': 0, 'all_rolls': None, 'total': -1}]}
 ```
 
 # To-Do
