@@ -19,13 +19,13 @@ def _parse_input(user_input):
     # remove all whitespace
     stripped_input = user_input.replace(' ', '')
     # regex for dice-roll format
-    roll_regex = re.compile(r'(([+-]{1})(\d+)d(\d+))(?!d|\d+)')
+    roll_regex = re.compile(r'(([+-]{1})(\d{1,4})d(\d{1,4}))(?!d|\d+)')
     # opening roll with no positive modifier
-    opening_roll_regex = re.compile(r'(^(\d+)d(\d+))(?!d|\d+)')
+    opening_roll_regex = re.compile(r'(^(\d{1,4})d(\d{1,4}))(?!d|\d+)')
     # regex for modifiers
-    modifier_regex = re.compile(r'[+-]{1}\d{1,3}(?!d|\d+)')
+    modifier_regex = re.compile(r'[+-]{1}\d{1,4}(?!d|\d+)')
     # positive modifier at start of line special case
-    opening_modifier_regex = re.compile(r'^\d{1,3}(?!d|\d+)')
+    opening_modifier_regex = re.compile(r'^\d{1,4}(?!d|\d+)')
 
     roll_matches = roll_regex.findall(stripped_input)
     opening_roll_matches = opening_roll_regex.findall(stripped_input)
