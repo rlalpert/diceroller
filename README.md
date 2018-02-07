@@ -37,3 +37,6 @@ diceroller.roll_detailed_dev("2d20-1d8+2-1")
 # To-Do
 
 * Get average rolls from roll info.
+* Validate input so that they are 
+  1. all integers
+  2. do not exceed 4 digits
